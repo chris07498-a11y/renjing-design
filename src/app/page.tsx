@@ -1,65 +1,73 @@
-import Image from "next/image";
+import Hero from "@/components/Hero";
+import ProjectCard from "@/components/ProjectCard";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <div className="flex flex-col items-center w-full">
+      {/* --------------------------------------------------------
+          [01] Hero Section - 第一屏
+          -------------------------------------------------------- */}
+      <Hero />
+
+      {/* --------------------------------------------------------
+          [02] Project Grid Section - 第二屏：畫廊網格
+          -------------------------------------------------------- */}
+      <section className="w-full max-w-7xl mx-auto px-6 py-32 md:py-56">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 md:gap-x-16 md:gap-y-48">
+          
+          <ProjectCard 
+            title="Quiet Sanctuary" 
+            category="Residential Design / London" 
+            imageUrl="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop" 
+          />
+          
+          {/* 非對稱排版：中段卡片下移 */}
+          <div className="md:mt-48 lg:mt-80"> 
+            <ProjectCard 
+              title="The Curator's Loft" 
+              category="Interior Curation / Paris" 
+              imageUrl="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?q=80&w=1200&auto=format&fit=crop" 
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
+          </div>
+
+          <ProjectCard 
+            title="Velvet Harmony" 
+            category="Furniture Concept / Milan" 
+            imageUrl="https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=1200&auto=format&fit=crop" 
+          />
+        </div>
+      </section>
+
+      {/* --------------------------------------------------------
+          [03] Footer - 頁尾 (美美註解：加大字級與 IG 藝術入口)
+          -------------------------------------------------------- */}
+      <footer className="w-full py-40 border-t border-[#2A2825]/10 flex flex-col items-center space-y-12">
+        {/* 品牌 Logo：加大尺寸提升大氣感 */}
+        <div className="font-serif italic text-3xl md:text-4xl text-[#2A2825]">
+          Ren.jing design
+        </div>
+
+        {/* Instagram 連結：極簡文字設計 */}
+        <div className="flex flex-col items-center group">
+          <a 
+            href="https://www.instagram.com/ren.jingpro/" 
+            target="_blank" 
             rel="noopener noreferrer"
+            className="relative"
           >
-            Documentation
+            <span className="text-[14px] tracking-[0.6em] uppercase text-[#2A2825] opacity-60 group-hover:opacity-100 transition-opacity duration-500">
+              Instagram
+            </span>
+            {/* 懸停時生長的優雅裝飾線 */}
+            <div className="mt-2 h-[1px] w-0 bg-[#2A2825] group-hover:w-full transition-all duration-700 ease-in-out mx-auto" />
           </a>
         </div>
-      </main>
+
+        {/* 版權與年份：字級同步提升，確保大王閱覽不費力 */}
+        <p className="text-[11px] md:text-[12px] tracking-[0.4em] uppercase text-[#2A2825]/40 text-center">
+          © 2026 Ren.jing design & Partners / All Rights Reserved
+        </p>
+      </footer>
     </div>
   );
 }
